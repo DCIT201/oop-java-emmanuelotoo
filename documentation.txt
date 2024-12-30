@@ -1,0 +1,167 @@
+
+Advanced Vehicle Rental Management System Documentation
+
+ Introduction
+The Advanced Vehicle Rental Management System is a console-based Java application designed for managing vehicle rentals. The system supports functionalities such as renting and returning vehicles, maintaining customer rental history, calculating loyalty points, and providing discounts based on loyalty status.
+
+
+
+Features
+1. Rent a Vehicle:
+   - Customers can browse available vehicles and rent them for a specific duration.
+   - The system ensures that only available vehicles are listed for rent.
+   - Rental pricing and total rental cost (after applying discounts) are calculated automatically.
+
+2. Return a Vehicle:
+   - Customers can return their rented vehicles.
+   - The system validates if the customer has a currently rented vehicle.
+
+3. View Rental History:
+   - Provides customers with a complete history of their rentals, detailing the vehicles rented and the associated costs.
+
+4. Display Loyalty Points:
+   - Customers can view their accumulated loyalty points.
+   - Discounts are offered based on loyalty points.
+
+5. Real-Time Vehicle Management:
+   - Maintains the status of vehicles (available/rented) dynamically.
+   - Prevents renting out one vehicle to multiple customers simultaneously.
+
+---
+
+ System Design Overview
+ Classes
+1. Main:
+   - Entry point of the application.
+   - Provides the main menu and UI interactions through the console.
+   - Manages customer operations such as renting, returning, and viewing rental details.
+
+2. RentalAgency:
+   - Contains the list of vehicles available for rental.
+   - Manages customers and their rentals.
+
+3. Vehicle and Subclasses (e.g. Car):
+   - Represents the vehicles with attributes such as ID, model, rental rate, and availability status.
+
+4. Customer:
+   - Stores customer information (e.g., name, phone number).
+   - Tracks the current and past rental transactions.
+   - Maintains loyalty points.
+
+5. RentalTransaction:
+   - Handles the details of a single rental event.
+   - Calculates the total rental cost and updates vehicle availability upon transaction completion.
+
+
+ Code Overview
+ Main Class
+ Purpose
+- Controls the application flow.
+- Provides interactivity via a console-based menu system.
+
+ Key Methods:
+1. rentVehicle(Scanner scanner):
+   - Facilitates vehicle rental for the logged-in customer.
+   - Creates a rental transaction and calculates the total cost.
+
+2. returnVehicle(Scanner scanner):
+   - Handles the return process for a rented vehicle.
+   - Updates the vehicle status to available.
+
+3. viewRentalHistory():
+   - Displays the customer's past rental records.
+
+4. displayLoyaltyPoints():
+   - Shows loyalty points and qualifies customers for future discounts.
+
+5. clearConsole():
+   - Clears the console screen for better readability (platform-dependent).
+
+
+
+ RentalAgency Class
+ Purpose
+- Acts as the core management class for vehicles and customers.
+
+ Key Features:
+1. Add Vehicles:
+   - Vehicles can be dynamically added to the system using addVehicle().
+   
+2. Customer Management:
+   - Provides methods for adding customers and checking their rental statuses.
+
+3. Vehicle Search:
+   - Locates available vehicles based on vehicle ID using findAvailableVehicle().
+
+
+
+ RentalTransaction Class
+ Purpose
+- Manages the lifecycle of a single rental.
+
+ Key Features:
+1. Transaction Completion:
+   - Initiates the rental by marking the vehicle as rented.
+   - Calculates the rental cost based on the rental duration and any applicable discounts.
+
+2. Returning a Vehicle:
+   - Updates the vehicle's availability status on return.
+
+
+
+ Customer Class
+ Purpose
+- Represents a customer interacting with the rental system.
+
+ Attributes:
+- Name and Phone Number: Tracks customer details.
+- Rental History: A list of past rental transactions.
+- Loyalty Points: Accumulated points based on rental activities.
+
+
+
+ Vehicle Class and Subclasses
+ Purpose
+- Represents vehicles available for rental.
+
+ Attributes:
+- ID: Unique identifier for the vehicle.
+- Model: Name/description of the vehicle.
+- Base Rental Rate: Per-day rental cost.
+- Availability Status: Tracks if the vehicle is currently rented or available.
+
+
+
+ Usage Instructions
+1. Start the Application:
+   - Run the program using a compatible Java runtime environment.
+   - Navigate through the menu using number inputs (e.g., press `1` to rent a vehicle).
+
+2. Rent a Vehicle:
+   - Browse the list of available vehicles.
+   - Enter the Vehicle ID and rental duration in days to complete the transaction.
+
+3. Return a Vehicle:
+   - Ensure you log in with the same customer account used during the rental.
+   - Follow the prompts to return the vehicle.
+
+4. View Rental History:
+   - Access a detailed list of your past rentals.
+
+5. Check Loyalty Points:
+   - View your loyalty points and eligibility for discounts on future rentals.
+
+
+Key Classes and Interactions
+| Class             | Primary Responsibility                               |
+|-------------------|----------------------------------------------------  |
+| Main              | Provides the entry point and menu-based system flow. |
+| RentalAgency      | Manages vehicles and customer operations.            |
+| Customer          | Represents customers and their rental histories.     |
+| Vehicle           | Base class for all vehicles.                         |
+| RentalTransaction | Handles rentals, returns, and total cost calculation.|
+
+
+
+
+The Advanced Vehicle Rental Management System provides a highly maintainable and robust foundation for rental services. With its modular approach, the system is easy to enhance and scale for upcoming use cases. It’s an ideal solution for small to medium-sized rental businesses, offering both efficiency and ease of use.
